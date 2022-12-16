@@ -1,0 +1,3 @@
+-   npx create-react-app + name
+-   install tailwind: https://tailwindcss.com/docs/guides/create-react-app
+-   npm i sass
