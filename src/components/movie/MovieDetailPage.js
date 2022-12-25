@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
-
 import useSWR from "swr";
 
 import { api_key, fetcher } from "../../config";
