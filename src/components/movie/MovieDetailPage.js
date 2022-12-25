@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 import { api_key, fetcher } from "../../config";
+import MovieCredits from "./MovieCredits";
+import MovieVideo from "./MovieVideo";
 const MovieDetailPage = () => {
     // useParams: get id trên thanh trình duyệt, return movieId
     const { movieId } = useParams();
@@ -15,7 +17,6 @@ const MovieDetailPage = () => {
 
     if (!data) return;
     const { backdrop_path, poster_path, title, genres, overview } = data;
-    console.log(data);
 
     return (
         <Fragment>
@@ -35,7 +36,7 @@ const MovieDetailPage = () => {
                     className="object-cover w-full h-full rounded-xl"
                 />
             </div>
-            <h1 className="mt-10 mb-10 text-3xl font-bold text-center text-white">
+            <h1 className="mt-10 mb-10 text-4xl font-bold text-center text-white">
                 {title}
             </h1>
             {genres.length > 0 && (
@@ -51,9 +52,11 @@ const MovieDetailPage = () => {
                 </div>
             )}
 
-            <p className="text-center leading-relaxed max-w-[600px] mx-auto">
+            <p className="mb-10 text-center leading-relaxed max-w-[600px] mx-auto">
                 {overview}
             </p>
+            <MovieCredits></MovieCredits>
+            <MovieVideo></MovieVideo>
         </Fragment>
     );
 };
