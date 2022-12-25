@@ -5,6 +5,7 @@ import useSWR from "swr";
 
 import { api_key, fetcher } from "../../config";
 import MovieCredits from "./MovieCredits";
+import MovieSimilar from "./MovieSimilar";
 import MovieVideo from "./MovieVideo";
 const MovieDetailPage = () => {
     // useParams: get id trên thanh trình duyệt, return movieId
@@ -57,6 +58,7 @@ const MovieDetailPage = () => {
             </p>
             <MovieCredits></MovieCredits>
             <MovieVideo></MovieVideo>
+            <MovieSimilar></MovieSimilar>
         </Fragment>
     );
 };

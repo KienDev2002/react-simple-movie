@@ -11,6 +11,7 @@ module.exports = {
             // đặt biến primary là biến mùa chính
             colors: {
                 primary: "#F62682",
+                secondary: "#6F5CF1",
             },
         },
     },
