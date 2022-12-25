@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+//tránh TH request liên tục
 export default function useDebounce(initialValue, delay = 1000) {
     const [debounceValue, setDebounceValue] = useState(initialValue);
 

@@ -10,11 +10,15 @@ const MoviePage = () => {
     const [url, setUrl] = useState(
         `https://api.themoviedb.org/3/movie/popular?api_key=6e1eb12ab3735cf3feb3ab8c6dc7b200`
     );
-    // 500 seconds sẽ change input
+    // 500 seconds sẽ thay thế là change input
     const filterDebounce = useDebounce(filter, 500);
     const handleFilterChangge = (e) => {
         setFilter(e.target.value);
     };
+
+    const { data, error } = useSWR(url, fetcher);
+    const movies = data?.results || [];
+    const loading = !data && !error;
 
     useEffect(() => {
         if (filterDebounce) {
@@ -27,10 +31,9 @@ const MoviePage = () => {
             );
         }
     }, [filterDebounce]);
-    const { data } = useSWR(url, fetcher);
-    const movies = data?.results || [];
+
     return (
-        <div className="py-10">
+        <div className="px-20 py-10">
             <div className="flex mb-4">
                 <div className="flex-1">
                     <input
@@ -57,11 +60,54 @@ const MoviePage = () => {
                     </svg>
                 </button>
             </div>
-            <div className="grid grid-cols-4 gap-10">
-                {movies.length > 0 &&
+            {loading && (
+                <div className="w-10 h-10 mx-auto border-4 border-t-4 rounded-full border-t-transparent animate-spin border-primary "></div>
+            )}
+
+            <div className="grid grid-cols-4 gap-10 mb-10">
+                {!loading &&
+                    movies.length > 0 &&
                     movies.map((item) => (
                         <MovieCard key={item.id} item={item}></MovieCard>
                     ))}
+            </div>
+
+            <div className="flex items-center justify-center gap-x-5">
+                <span className="cursor-pointer">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M15.75 19.5L8.25 12l7.5-7.5"
+                        />
+                    </svg>
+                </span>
+                <span className="inline-block px-4 py-2 leading-none bg-white rounded-sm cursor-pointer text-slate-900">
+                    1
+                </span>
+                <span className="cursor-pointer">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                        />
+                    </svg>
+                </span>
             </div>
         </div>
     );
