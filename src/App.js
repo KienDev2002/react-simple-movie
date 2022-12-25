@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 // NavLink: link có active
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "swiper/scss";
 
-import Banner from "./components/banner/Banner";
 import Main from "./components/layout/Main";
+import MovieDetailPage from "./components/movie/MovieDetailPage";
 import HomePage from "./components/pages/HomePage";
 import MoviePage from "./components/pages/MoviePage";
 
@@ -19,8 +19,12 @@ function App() {
 
                     {/* page movies */}
                     <Route
-                        path="/movies"
+                        path="/movie"
                         element={<MoviePage></MoviePage>}
+                    ></Route>
+                    <Route
+                        path="/movie/:movieId"
+                        element={<MovieDetailPage></MovieDetailPage>}
                     ></Route>
                 </Route>
             </Routes>
