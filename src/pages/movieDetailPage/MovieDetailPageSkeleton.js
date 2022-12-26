@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import LoadingSkeleton from "~/components/loading/LoadingSkeleton";
-import MovieMeta from "~/components/movie/pageDetail/moveMeta/MovieMeta";
+import MovieMeta from "~/components/movie/movieDetail/MovieMeta";
 
 const MovieDetailPageSkeleton = () => {
     return (

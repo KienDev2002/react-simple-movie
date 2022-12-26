@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { SwiperSlide, Swiper } from "swiper/react";
 
 import { fetcher, tmdbAPI } from "~/config";
-import MovieCredits from "~/components/movie/pageDetail/moveMeta/MovieCredits/MovieCredits";
+import MovieCredits from "~/components/movie/movieDetail/MovieCredits/MovieCredits";
 import MovieVideo from "./movieVideo/MovieVideo";
 import MovieSimilar from "./movieSimilar/MovieSimilar";
 import FallbackComponent from "~/components/error/FallbackComponent";

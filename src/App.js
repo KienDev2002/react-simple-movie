@@ -5,13 +5,14 @@ import { Route, Routes } from "react-router-dom";
 import "swiper/scss";
 
 import Main from "~/components/layout/Main";
-import MoviePageLoadMore from "./pages/MoviePageLoadMore";
+import MoviePageLoadMore from "~/pages/moviePage/MoviePageLoadMore";
+import PageNotFound from "./pages/PageNotFound";
 
 const MovieDetailPage = lazy(() =>
-    import("~/components/movie/pageDetail/MovieDetailPage/MovieDetailPage")
+    import("~/pages/movieDetailPage/MovieDetailPage")
 );
 const HomePage = lazy(() => import("~/pages/HomePage"));
-const MoviePage = lazy(() => import("~/pages/MoviePage"));
+const MoviePage = lazy(() => import("~/pages/moviePage/MoviePage"));
 
 function App() {
     return (
@@ -32,6 +33,11 @@ function App() {
                         <Route
                             path="/movie/:movieId"
                             element={<MovieDetailPage></MovieDetailPage>}
+                        ></Route>
+
+                        <Route
+                            path="*"
+                            element={<PageNotFound></PageNotFound>}
                         ></Route>
                     </Route>
                 </Routes>

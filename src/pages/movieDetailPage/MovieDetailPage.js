@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 import { fetcher, tmdbAPI } from "~/config";
-import MovieMeta from "../moveMeta/MovieMeta";
+import MovieMeta from "../../components/movie/movieDetail/MovieMeta";
 import MovieDetailPageSkeleton from "./MovieDetailPageSkeleton";
 const MovieDetailPage = () => {
     // useParams: get id trên thanh trình duyệt, return movieId
