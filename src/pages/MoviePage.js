@@ -3,8 +3,9 @@ import useSWR from "swr";
 import ReactPaginate from "react-paginate";
 
 import { fetcher, tmdbAPI } from "~/config";
-import MovieCard from "~/components/movie/MovieCard";
-import useDebounce from "~/components/hooks/useDebounce";
+import MovieCard from "~/components/movie/movieCard/MovieCard";
+import useDebounce from "~/hooks/useDebounce";
+import MovieCardSkeleton from "../components/movie/movieCard/MovieCardSkeleton";
 
 // one page have 20 cards movie
 const itemsPerPage = 20;
@@ -20,7 +21,7 @@ const MoviePage = () => {
     };
 
     const { data, error } = useSWR(url, fetcher);
-    const loading = !data && !error;
+    const isLoading = !data && !error;
 
     const movies = data?.results || [];
     // const { page, total_pages } = data;
@@ -76,16 +77,23 @@ const MoviePage = () => {
                     </svg>
                 </button>
             </div>
-            {loading && (
+            {isLoading && (
                 <div className="w-10 h-10 mx-auto border-4 border-t-4 rounded-full border-t-transparent animate-spin border-primary "></div>
             )}
 
             <div className="grid grid-cols-4 gap-10 mb-10">
-                {!loading &&
-                    movies.length > 0 &&
+                {!isLoading && movies.length > 0 ? (
                     movies.map((item) => (
                         <MovieCard key={item.id} item={item}></MovieCard>
-                    ))}
+                    ))
+                ) : (
+                    <>
+                        <MovieCardSkeleton></MovieCardSkeleton>
+                        <MovieCardSkeleton></MovieCardSkeleton>
+                        <MovieCardSkeleton></MovieCardSkeleton>
+                        <MovieCardSkeleton></MovieCardSkeleton>
+                    </>
+                )}
             </div>
 
             <div className="mt-10">

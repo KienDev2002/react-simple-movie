@@ -7,10 +7,10 @@ import "swiper/scss";
 import Main from "~/components/layout/Main";
 
 const MovieDetailPage = lazy(() =>
-    import("~/components/movie/MovieDetailPage")
+    import("~/components/movie/pageDetail/MovieDetailPage/MovieDetailPage")
 );
-const HomePage = lazy(() => import("~/components/pages/HomePage"));
-const MoviePage = lazy(() => import("~/components/pages/MoviePage"));
+const HomePage = lazy(() => import("~/pages/HomePage"));
+const MoviePage = lazy(() => import("~/pages/MoviePage"));
 
 function App() {
     return (

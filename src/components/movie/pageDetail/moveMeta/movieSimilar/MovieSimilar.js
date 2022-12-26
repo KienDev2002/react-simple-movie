@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import FallbackComponent from "~/components/error/FallbackComponent";
 
-import MovieCard from "./MovieCard";
+import MovieCard from "../../../movieCard/MovieCard";
 import { withErrorBoundary } from "react-error-boundary";
 const MovieSimilar = ({ results }) => {
     return (
