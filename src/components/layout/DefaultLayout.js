@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
-const Main = () => {
+const DefaultLayout = () => {
     return (
         <Fragment>
             <Header></Header>
@@ -10,4 +10,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default DefaultLayout;

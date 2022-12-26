@@ -4,7 +4,7 @@ import { Fragment, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import "swiper/scss";
 
-import Main from "~/components/layout/Main";
+import DefaultLayout from "~/components/layout/DefaultLayout";
 import MoviePageLoadMore from "~/pages/moviePage/MoviePageLoadMore";
 import PageNotFound from "./pages/PageNotFound";
 
@@ -19,9 +19,8 @@ function App() {
         <Fragment>
             <Suspense fallback={<></>}>
                 <Routes>
-                    {/* ko có path và la cha của HomePage để page nào cũng có header là main */}
-                    <Route element={<Main></Main>}>
-                        {/* Outlet: bên main là cha để hiển thị component HomePage: trang chủ */}
+                    <Route element={<DefaultLayout></DefaultLayout>}>
+                        {/* HomePage*/}
                         <Route path="/" element={<HomePage></HomePage>}></Route>
 
                         {/* page movies */}
