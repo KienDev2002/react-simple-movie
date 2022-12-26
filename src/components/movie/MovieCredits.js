@@ -3,15 +3,12 @@ import { useParams } from "react-router-dom";
 
 import useSWR from "swr";
 
-import { api_key, fetcher } from "../../config";
+import { fetcher, tmdbAPI } from "../../config";
 
 const MovieCredits = () => {
     const { movieId } = useParams();
 
-    const { data } = useSWR(
-        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${api_key}`,
-        fetcher
-    );
+    const { data } = useSWR(tmdbAPI.getMovieMeta(movieId, "credits"), fetcher);
 
     if (!data) return null;
     const { cast } = data;
@@ -26,7 +23,7 @@ const MovieCredits = () => {
                     <div className="cast-item">
                         <img
                             key={item.id}
-                            src={`https://image.tmdb.org/t/p/original/${item.profile_path}`}
+                            src={tmdbAPI.imageOriginal(item.profile_path)}
                             alt=""
                             className="w-full h-[350px] object-cover rounded-lg mb-3"
                         />

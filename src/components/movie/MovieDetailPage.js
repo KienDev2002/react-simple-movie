@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
-import { api_key, fetcher } from "../../config";
+import { fetcher, tmdbAPI } from "../../config";
 import MovieCredits from "./MovieCredits";
 import MovieSimilar from "./MovieSimilar";
 import MovieVideo from "./MovieVideo";
@@ -10,10 +10,7 @@ const MovieDetailPage = () => {
     // useParams: get id trên thanh trình duyệt, return movieId
     const { movieId } = useParams();
 
-    const { data } = useSWR(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${api_key}`,
-        fetcher
-    );
+    const { data } = useSWR(tmdbAPI.getMovieDetails(movieId), fetcher);
 
     if (!data) return;
     const { backdrop_path, poster_path, title, genres, overview } = data;
@@ -25,13 +22,15 @@ const MovieDetailPage = () => {
                 <div
                     className="w-full h-full bg-no-repeat bg-cover"
                     style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
+                        backgroundImage: `url(${tmdbAPI.imageOriginal(
+                            backdrop_path
+                        )})`,
                     }}
                 ></div>
             </div>
             <div className="w-full h-[300px] max-w-[800px] mx-auto -mt-[200px] relative z-10">
                 <img
-                    src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+                    src={tmdbAPI.imageOriginal(poster_path)}
                     alt=""
                     className="object-cover w-full h-full rounded-xl"
                 />

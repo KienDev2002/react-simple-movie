@@ -4,14 +4,11 @@ import useSWR from "swr";
 import { SwiperSlide, Swiper } from "swiper/react";
 
 import MovieCard from "./MovieCard";
-import { api_key, fetcher } from "../../config";
+import { fetcher, tmdbAPI } from "../../config";
 const MovieSimilar = () => {
     const { movieId } = useParams();
 
-    const { data } = useSWR(
-        `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${api_key}`,
-        fetcher
-    );
+    const { data } = useSWR(tmdbAPI.getMovieMeta(movieId, "similar"), fetcher);
 
     if (!data) return null;
 
