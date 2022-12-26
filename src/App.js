@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import "swiper/scss";
 
 import Main from "~/components/layout/Main";
+import MoviePageLoadMore from "./pages/MoviePageLoadMore";
 
 const MovieDetailPage = lazy(() =>
     import("~/components/movie/pageDetail/MovieDetailPage/MovieDetailPage")
@@ -25,7 +26,8 @@ function App() {
                         {/* page movies */}
                         <Route
                             path="/movie"
-                            element={<MoviePage></MoviePage>}
+                            // element={<MoviePage></MoviePage>}
+                            element={<MoviePageLoadMore></MoviePageLoadMore>}
                         ></Route>
                         <Route
                             path="/movie/:movieId"
