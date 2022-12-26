@@ -23,11 +23,7 @@ const MovieCard = ({ item }) => {
                     <span>{vote_average}</span>
                 </div>
 
-                <Button
-                    bgColor="secondary"
-                    full
-                    onClick={() => navigate(`/movie/${id}`)}
-                >
+                <Button full onClick={() => navigate(`/movie/${id}`)}>
                     Watch now
                 </Button>
             </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import ReactPaginate from "react-paginate";
 
-import { fetcher } from "../../config";
+import { fetcher, tmdbAPI } from "../../config";
 import MovieCard from "../movie/MovieCard";
 import useDebounce from "../hooks/useDebounce";
 
@@ -12,9 +12,7 @@ const MoviePage = () => {
     // page mỗi phân trang 1,2,3,...
     const [nextPage, setNextPage] = useState(1);
     const [filter, setFilter] = useState("");
-    const [url, setUrl] = useState(
-        `https://api.themoviedb.org/3/movie/popular?api_key=6e1eb12ab3735cf3feb3ab8c6dc7b200&page=${nextPage}`
-    );
+    const [url, setUrl] = useState(tmdbAPI.getMovieList("popular", nextPage));
     // 500 seconds sẽ thay thế là change input
     const filterDebounce = useDebounce(filter, 500);
     const handleFilterChangge = (e) => {
@@ -28,13 +26,9 @@ const MoviePage = () => {
     // const { page, total_pages } = data;
     useEffect(() => {
         if (filterDebounce) {
-            setUrl(
-                `https://api.themoviedb.org/3/search/movie?api_key=6e1eb12ab3735cf3feb3ab8c6dc7b200&query=${filterDebounce}&page=${nextPage}`
-            );
+            setUrl(tmdbAPI.getMovieSearch(filterDebounce, nextPage));
         } else {
-            setUrl(
-                `https://api.themoviedb.org/3/movie/popular?api_key=6e1eb12ab3735cf3feb3ab8c6dc7b200&page=${nextPage}`
-            );
+            setUrl(tmdbAPI.getMovieList("popular", nextPage));
         }
     }, [filterDebounce, nextPage]);
 
