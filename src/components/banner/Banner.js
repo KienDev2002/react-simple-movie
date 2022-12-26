@@ -3,7 +3,7 @@ import { SwiperSlide, Swiper } from "swiper/react";
 
 import useSWR from "swr";
 
-import { fetcher } from "../../config";
+import { fetcher } from "~/config";
 import BannerItem from "./BannerItem";
 
 const Banner = () => {

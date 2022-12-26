@@ -3,10 +3,10 @@ import { Fragment } from "react";
 import { Route, Routes } from "react-router-dom";
 import "swiper/scss";
 
-import Main from "./components/layout/Main";
-import MovieDetailPage from "./components/movie/MovieDetailPage";
-import HomePage from "./components/pages/HomePage";
-import MoviePage from "./components/pages/MoviePage";
+import Main from "~/components/layout/Main";
+import MovieDetailPage from "~/components/movie/MovieDetailPage";
+import HomePage from "~/components/pages/HomePage";
+import MoviePage from "~/components/pages/MoviePage";
 
 function App() {
     return (

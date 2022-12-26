@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import Button from "../button/Button";
+import Button from "~/components/button/Button";
 
 const BannerItem = ({ item }) => {
     const { title, poster_path, id } = item;

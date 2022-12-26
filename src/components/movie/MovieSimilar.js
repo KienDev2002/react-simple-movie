@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { SwiperSlide, Swiper } from "swiper/react";
 
 import MovieCard from "./MovieCard";
-import { fetcher, tmdbAPI } from "../../config";
+import { fetcher, tmdbAPI } from "~/config";
 const MovieSimilar = () => {
     const { movieId } = useParams();
 

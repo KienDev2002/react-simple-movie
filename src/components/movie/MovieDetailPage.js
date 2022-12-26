@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
-import { fetcher, tmdbAPI } from "../../config";
+import { fetcher, tmdbAPI } from "~/config";
 import MovieCredits from "./MovieCredits";
 import MovieSimilar from "./MovieSimilar";
 import MovieVideo from "./MovieVideo";

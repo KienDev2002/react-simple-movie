@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import useSWR from "swr";
 
-import { fetcher, tmdbAPI } from "../../config";
+import { fetcher, tmdbAPI } from "~/config";
 
 const MovieCredits = () => {
     const { movieId } = useParams();
