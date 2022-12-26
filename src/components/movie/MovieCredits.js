@@ -1,20 +1,7 @@
 import React, { Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { tmdbAPI } from "~/config";
 
-import useSWR from "swr";
-
-import { fetcher, tmdbAPI } from "~/config";
-
-const MovieCredits = () => {
-    const { movieId } = useParams();
-
-    const { data } = useSWR(tmdbAPI.getMovieMeta(movieId, "credits"), fetcher);
-
-    if (!data) return null;
-    const { cast } = data;
-
-    if (!cast || cast.length <= 0) return null;
-
+const MovieCredits = ({ cast }) => {
     return (
         <Fragment>
             <h2 className="mb-10 text-3xl text-center">Casts</h2>

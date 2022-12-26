@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import useSWR from "swr";
 
 import { fetcher, tmdbAPI } from "~/config";
-import MovieCredits from "./MovieCredits";
-import MovieSimilar from "./MovieSimilar";
-import MovieVideo from "./MovieVideo";
+import MovieMeta from "./MovieMeta";
 const MovieDetailPage = () => {
     // useParams: get id trên thanh trình duyệt, return movieId
     const { movieId } = useParams();
@@ -54,9 +52,9 @@ const MovieDetailPage = () => {
             <p className="mb-10 text-center leading-relaxed max-w-[600px] mx-auto">
                 {overview}
             </p>
-            <MovieCredits></MovieCredits>
-            <MovieVideo></MovieVideo>
-            <MovieSimilar></MovieSimilar>
+            <MovieMeta type="credits"></MovieMeta>
+            <MovieMeta type="videos"></MovieMeta>
+            <MovieMeta type="similar"></MovieMeta>
         </Fragment>
     );
 };

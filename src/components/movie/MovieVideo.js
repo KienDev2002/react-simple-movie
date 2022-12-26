@@ -1,20 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
-import useSWR from "swr";
-
-import { fetcher, tmdbAPI } from "~/config";
-
-const MovieVideo = () => {
-    const { movieId } = useParams();
-
-    const { data } = useSWR(tmdbAPI.getMovieMeta(movieId, "videos"), fetcher);
-
-    if (!data) return null;
-
-    const { results } = data;
-    if (!results || results.length <= 0) return null;
-
+const MovieVideo = ({ results }) => {
     return (
         <div className="py-10">
             <h2 className="mb-10 text-3xl text-center">Trailers</h2>
