@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { tmdbAPI } from "~/config";
+import PropTypes from "prop-types";
+// catch error when truyền props vào
+import { withErrorBoundary } from "react-error-boundary";
 
+import { tmdbAPI } from "~/config";
 import Button from "~/components/button/Button";
+import FallbackComponent from "~/components/error/FallbackComponent";
 
 const MovieCard = ({ item }) => {
     const { title, vote_average, poster_path, release_date, id } = item;
@@ -31,4 +35,17 @@ const MovieCard = ({ item }) => {
     );
 };
 
-export default MovieCard;
+// catch error when truyền props vào
+MovieCard.propTypes = {
+    item: PropTypes.shape({
+        title: PropTypes.string,
+        vote_average: PropTypes.number,
+        poster_path: PropTypes.string,
+        release_date: PropTypes.string,
+        id: PropTypes.number,
+    }),
+};
+
+export default withErrorBoundary(MovieCard, {
+    FallbackComponent,
+});

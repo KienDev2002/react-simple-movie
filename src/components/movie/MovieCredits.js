@@ -1,5 +1,9 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+
 import { tmdbAPI } from "~/config";
+import FallbackComponent from "~/components/error/FallbackComponent";
 
 const MovieCredits = ({ cast }) => {
     return (
@@ -7,7 +11,7 @@ const MovieCredits = ({ cast }) => {
             <h2 className="mb-10 text-3xl text-center">Casts</h2>
             <div className="grid grid-cols-4 gap-5">
                 {cast.slice(0, 4).map((item) => (
-                    <div className="cast-item">
+                    <div key={item.id} className="cast-item">
                         <img
                             key={item.id}
                             src={tmdbAPI.imageOriginal(item.profile_path)}
@@ -24,4 +28,10 @@ const MovieCredits = ({ cast }) => {
     );
 };
 
-export default MovieCredits;
+MovieCredits.propTypes = {
+    cast: PropTypes.array.isRequired,
+};
+
+export default withErrorBoundary(MovieCredits, {
+    FallbackComponent,
+});

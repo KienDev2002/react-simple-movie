@@ -1,4 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { withErrorBoundary } from "react-error-boundary";
+
+import FallbackComponent from "~/components/error/FallbackComponent";
 
 const MovieVideo = ({ results }) => {
     return (
@@ -29,4 +33,8 @@ const MovieVideo = ({ results }) => {
     );
 };
 
-export default MovieVideo;
+MovieVideo.propTypes = {
+    results: PropTypes.array.isRequired,
+};
+
+export default withErrorBoundary(MovieVideo, { FallbackComponent });

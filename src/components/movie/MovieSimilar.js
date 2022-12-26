@@ -1,7 +1,11 @@
 import React from "react";
 import { SwiperSlide, Swiper } from "swiper/react";
+import PropTypes from "prop-types";
+
+import FallbackComponent from "~/components/error/FallbackComponent";
 
 import MovieCard from "./MovieCard";
+import { withErrorBoundary } from "react-error-boundary";
 const MovieSimilar = ({ results }) => {
     return (
         <div className="py-10">
@@ -26,4 +30,8 @@ const MovieSimilar = ({ results }) => {
     );
 };
 
-export default MovieSimilar;
+MovieSimilar.propTypes = {
+    results: PropTypes.array.isRequired,
+};
+
+export default withErrorBoundary(MovieSimilar, { FallbackComponent });

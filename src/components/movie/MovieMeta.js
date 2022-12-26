@@ -1,10 +1,13 @@
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
+import { withErrorBoundary } from "react-error-boundary";
+import PropTypes from "prop-types";
 
 import { fetcher, tmdbAPI } from "~/config";
 import MovieCredits from "./MovieCredits";
 import MovieVideo from "./MovieVideo";
 import MovieSimilar from "./MovieSimilar";
+import FallbackComponent from "~/components/error/FallbackComponent";
 
 const MovieMeta = ({ type = "videos" }) => {
     const { movieId } = useParams();
@@ -31,4 +34,10 @@ const MovieMeta = ({ type = "videos" }) => {
     }
 };
 
-export default MovieMeta;
+MovieMeta.propTypes = {
+    type: PropTypes.string.isRequired,
+};
+
+export default withErrorBoundary(MovieMeta, {
+    FallbackComponent,
+});
