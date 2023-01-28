@@ -1,3 +1,5 @@
 -   npx create-react-app + name
 -   install tailwind: https://tailwindcss.com/docs/guides/create-react-app
 -   npm i sass
+-   customize-cra, babel use easy import path
+-   react-router-dom
